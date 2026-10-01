@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Courses | CoursePath</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.course-page {
+    padding: 60px 8%;
+}
+
+.course-page h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.course-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.course-card h2 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.course-code {
+    color: #64748b;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">CoursePath</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="courses.html">Courses</a>
+<a href="prerequisites.html">Prerequisites</a>
+<a href="checker.html">Checker</a>
+<a href="graph.html">Graph</a>
+<a href="pathfinder.html">Path Finder</a>
+<a href="about.html">About</a>
+</nav>
+
+</header>
+
+<section class="course-page">
+
+<h1>Available Courses</h1>
+
+<div class="course-grid" id="courseGrid"></div>
+
+</section>
+
+<script src="js/courses.js"></script>
+
+<script>
+
+const grid = document.getElementById("courseGrid");
+
+for (const course in courses) {
+
+    const card = document.createElement("div");
+
+    card.className = "course-card";
+
+    card.innerHTML = `
+        <h2>${course}</h2>
+        <p class="course-code">
+            Course Code: ${courses[course].code}
+        </p>
+    `;
+
+    grid.appendChild(card);
+}
+
+</script>
+
+</body>
+</html>

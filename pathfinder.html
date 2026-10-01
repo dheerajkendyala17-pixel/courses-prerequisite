@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Prerequisite Path Finder</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.path-container {
+
+    max-width: 800px;
+
+    margin: 60px auto;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 25px rgba(0,0,0,.08);
+
+}
+
+.path-container h1 {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+select {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 10px 0 20px;
+
+}
+
+button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+#pathResult {
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+    background: #f1f5f9;
+
+    border-radius: 10px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">CoursePath</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="courses.html">Courses</a>
+<a href="prerequisites.html">Prerequisites</a>
+<a href="checker.html">Checker</a>
+<a href="graph.html">Graph</a>
+<a href="pathfinder.html">Path Finder</a>
+<a href="about.html">About</a>
+
+</nav>
+
+</header>
+
+
+<div class="path-container">
+
+<h1>Prerequisite Path Finder</h1>
+
+<select id="targetCourse">
+
+<option value="">
+Select Course
+</option>
+
+</select>
+
+<button onclick="findPath()">
+Find Prerequisite Chain
+</button>
+
+<div id="pathResult">
+
+Select a course to see its prerequisite path.
+
+</div>
+
+</div>
+
+
+<script src="js/courses.js"></script>
+
+<script>
+
+const targetCourse =
+document.getElementById("targetCourse");
+
+for (const course in courses) {
+
+    const option =
+    document.createElement("option");
+
+    option.value = course;
+
+    option.textContent = course;
+
+    targetCourse.appendChild(option);
+}
+
+
+function findPath() {
+
+    const selected =
+    targetCourse.value;
+
+    const result =
+    document.getElementById("pathResult");
+
+
+    if (!selected) {
+
+        result.innerHTML =
+        "Please select a course.";
+
+        return;
+
+    }
+
+
+    const visited = new Set();
+
+    const path = [];
+
+
+    function dfs(course) {
+
+        if (visited.has(course)) {
+            return;
+        }
+
+        visited.add(course);
+
+
+        const prerequisites =
+        courses[course].prerequisites;
+
+
+        for (const prerequisite
+             of prerequisites) {
+
+            dfs(prerequisite);
+
+        }
+
+
+        path.push(course);
+
+    }
+
+
+    dfs(selected);
+
+
+    result.innerHTML = `
+        <h3>Prerequisite Learning Path</h3>
+
+        <p>
+        ${path.join(" → ")}
+        </p>
+    `;
+}
+
+</script>
+
+</body>
+
+</html>

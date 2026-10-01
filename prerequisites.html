@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Prerequisites | CoursePath</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.page {
+    padding: 60px 8%;
+}
+
+.page h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.prereq-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.prereq-table th,
+.prereq-table td {
+    padding: 18px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.prereq-table th {
+    background: #2563eb;
+    color: white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">CoursePath</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="courses.html">Courses</a>
+<a href="prerequisites.html">Prerequisites</a>
+<a href="checker.html">Checker</a>
+<a href="graph.html">Graph</a>
+<a href="pathfinder.html">Path Finder</a>
+<a href="about.html">About</a>
+</nav>
+
+</header>
+
+<section class="page">
+
+<h1>Course Prerequisite Relationships</h1>
+
+<table class="prereq-table">
+
+<thead>
+
+<tr>
+<th>Course</th>
+<th>Course Code</th>
+<th>Prerequisites</th>
+</tr>
+
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+</section>
+
+<script src="js/courses.js"></script>
+
+<script>
+
+const table = document.getElementById("tableBody");
+
+for (const course in courses) {
+
+    const prerequisites = courses[course].prerequisites;
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${course}</td>
+
+        <td>${courses[course].code}</td>
+
+        <td>
+            ${
+                prerequisites.length === 0
+                ? "None"
+                : prerequisites.join(", ")
+            }
+        </td>
+    `;
+
+    table.appendChild(row);
+}
+
+</script>
+
+</body>
+</html>

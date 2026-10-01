@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Directed Graph</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.graph-page {
+    padding: 50px 7%;
+}
+
+.graph-page h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.graph-page p {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 40px;
+}
+
+.graph {
+    min-height: 500px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.08);
+    padding: 40px;
+    overflow: auto;
+}
+
+.graph-node {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin: 12px;
+    font-weight: bold;
+}
+
+.arrow {
+    color: #64748b;
+    font-size: 25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">CoursePath</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="courses.html">Courses</a>
+<a href="prerequisites.html">Prerequisites</a>
+<a href="checker.html">Checker</a>
+<a href="graph.html">Graph</a>
+<a href="pathfinder.html">Path Finder</a>
+<a href="about.html">About</a>
+
+</nav>
+
+</header>
+
+<section class="graph-page">
+
+<h1>Course Dependency Graph</h1>
+
+<p>
+Each arrow represents a prerequisite relationship.
+</p>
+
+<div class="graph">
+
+<div class="graph-node">
+Programming Fundamentals
+</div>
+
+<span class="arrow">→</span>
+
+<div class="graph-node">
+Data Structures
+</div>
+
+<span class="arrow">→</span>
+
+<div class="graph-node">
+Algorithms
+</div>
+
+<span class="arrow">→</span>
+
+<div class="graph-node">
+Artificial Intelligence
+</div>
+
+<span class="arrow">→</span>
+
+<div class="graph-node">
+Machine Learning
+</div>
+
+<span class="arrow">→</span>
+
+<div class="graph-node">
+Generative AI
+</div>
+
+</div>
+
+</section>
+
+</body>
+
+</html>
